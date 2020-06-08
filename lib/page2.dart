@@ -29,6 +29,8 @@ class _page2State extends State<page2> {
   fetchData()async {
     var response = await http.get(url);
     data = jsonDecode(response.body);
+    // print(data);
+    print(data["json"][1]["productImagePath"]["exteriorView"]);
     setState(() {});
   }
 
@@ -40,7 +42,9 @@ class _page2State extends State<page2> {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(home: Scaffold(
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: Scaffold(
       body: data != null?Column(
           children: <Widget>[
             Container(
@@ -95,10 +99,40 @@ class _page2State extends State<page2> {
                                         ),
                                       ),
                                       Text(
-                                        data['json'][index]['buildingName'],
-                                        style: TextStyle(
-                                          fontSize: 18,
+                                          data['json'][index]['buildingName'],
+                                          style: TextStyle(
+                                            fontSize: 18,
+                                          ),
                                         ),
+                                      SizedBox(width:23),
+                                      Row(
+                                        children: <Widget>[
+                                          Icon(
+                                            Icons.star,
+                                            size: 20.0,
+                                            color: Colors.lightBlueAccent,
+                                          ),
+                                          Icon(
+                                            Icons.star,
+                                            size: 20.0,
+                                            color: Colors.lightBlueAccent,
+                                          ),
+                                          Icon(
+                                            Icons.star,
+                                            size: 20.0,
+                                            color: Colors.lightBlueAccent,
+                                          ),
+                                          Icon(
+                                            Icons.star,
+                                            size: 20.0,
+                                            color: Colors.lightBlueAccent,
+                                          ),
+                                          Icon(
+                                            Icons.star_half,
+                                            size: 20.0,
+                                            color: Colors.lightBlueAccent,
+                                          ),
+                                        ],
                                       ),
                                     ],
                                   ),
@@ -114,48 +148,17 @@ class _page2State extends State<page2> {
                                         Icons.location_on,
                                         size: 18.0,
                                       ),
-                                      Text(
-                                        data['json'][index]['streetDetails'],
-                                        style: TextStyle(
-                                          fontSize: 15,
-                                        ),
-                                      ),
+                                     Text(
+                                       data['json'][index]['streetDetails'],
+                                       style: TextStyle(
+                                         fontSize: 15,
+                                       ),
+                                     ),
                                     ],
                                   ),
                                 ],
                               ),
-                              SizedBox(
-                                width: 17,
-                              ),
-                              Row(
-                                children: <Widget>[
-                                  Icon(
-                                    Icons.star,
-                                    size: 20.0,
-                                    color: Colors.lightBlueAccent,
-                                  ),
-                                  Icon(
-                                    Icons.star,
-                                    size: 20.0,
-                                    color: Colors.lightBlueAccent,
-                                  ),
-                                  Icon(
-                                    Icons.star,
-                                    size: 20.0,
-                                    color: Colors.lightBlueAccent,
-                                  ),
-                                  Icon(
-                                    Icons.star,
-                                    size: 20.0,
-                                    color: Colors.lightBlueAccent,
-                                  ),
-                                  Icon(
-                                    Icons.star_half,
-                                    size: 20.0,
-                                    color: Colors.lightBlueAccent,
-                                  ),
-                                ],
-                              ),
+
                             ],
                           ),
                           SizedBox(
@@ -178,4 +181,3 @@ class _page2State extends State<page2> {
   }
 
 }
-
